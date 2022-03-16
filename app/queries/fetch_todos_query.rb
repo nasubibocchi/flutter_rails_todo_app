@@ -3,8 +3,8 @@ class FetchTodosQuery
 
     attr_reader :body, :isDone
 
-    validates :body, presence :true
-    validates :isDone, presence :true
+    validates :body, presence: true
+    validates :isDone, presence: true
 
     def call
         todos = fetch_todos
