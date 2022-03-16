@@ -3,8 +3,8 @@ class CreateTodoCommand
     attr_reader :body, :isDone
     attr_accessor :todos
 
-    validates :body, presence :true
-    validates :isDone, presence :true
+    validates :body, :presence :true
+    validates :isDone, :presence :true
 
     def initialize(body:, isDone:)
         @body = body
