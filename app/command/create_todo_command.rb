@@ -16,5 +16,6 @@ class CreateTodoCommand
             body: body,
             isDone: isDone,
         )
+        self.todo = todo;
     end
 end
