@@ -10,8 +10,8 @@ class TodosController < ApplicationController
 
     def create
         command = ::CreateTodoCommand.run(
-            body: safe_param[:body]
-            isDone: safe_param[:isDone]
+            body: safe_params[:body]
+            isDone: safe_params[:isDone],
         )
 
         if command.success?
@@ -31,4 +31,10 @@ class TodosController < ApplicationController
             render json: { error: {messages: command.errors.full_messages } }, status: bad_request
         end
     end
+
+    private
+
+        def safe_params
+            params.permit(:body, :isDone)
+        end
 end
