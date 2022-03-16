@@ -1,5 +1,5 @@
 module Query
-    extend ActiceSupport::Concern
+    extend ActiveSupport::Concern
     include ActiveModel::Model
 
     attr_accessor :result
