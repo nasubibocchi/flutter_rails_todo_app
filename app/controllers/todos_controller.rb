@@ -1,4 +1,9 @@
 class TodosController < ApplicationController
+
+    def index
+        @todos = Todo.all;
+    end
+
     def all
         query = ::FetchTodosQuery.call
         if query.success?
