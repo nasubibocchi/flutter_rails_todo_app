@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Todos</h1>
+
+<div id="todos">
+    <% @todos.each do |todo| %>
+    <tr>
+        <td><%= todo.body %></td>
+        <td><%= todo.isDone %></td>
+    </tr>
+    <% end %>
+</div>
