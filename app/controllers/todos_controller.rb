@@ -10,7 +10,7 @@ class TodosController < ApplicationController
 
     def create
         command = ::CreateTodoCommand.run(
-            body: safe_params[:body]
+            body: safe_params[:body],
             isDone: safe_params[:isDone],
         )
 
