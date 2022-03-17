@@ -1,3 +1,4 @@
+# Module cant be instance
 module Query
     extend ActiveSupport::Concern
     include ActiveModel::Model
