@@ -1,21 +1,5 @@
 class TodosController < ApplicationController
 
-    def index
-        @todos = Todo.all;
-    end
-
-    def show
-    end
-
-    def all
-        query = ::FetchTodosQuery.call
-        if query.success?
-            render json: query.result, serializer: ::TodoListSerializer
-        else
-            render json: { error: {messages: query.errors.full_messages } }, status: bad_request
-        end
-    end
-
     def create
         command = ::CreateTodoCommand.run(
             body: safe_params[:body],
@@ -29,6 +13,16 @@ class TodosController < ApplicationController
         end
     end
 
+    def index
+        todos = ::Todo.all
+        render json: todos, each_serializer: ::TodoSerializer
+    end
+
+    def show
+        todos = ::Todo.find_by!(id: params[:id])
+        render json: todos, serializer: ::TodoSerializer
+    end
+
     def update
         command = ::UpdateTodoCommand.run(
             isDone: !(params[:isDone]&.presence),
@@ -37,6 +31,21 @@ class TodosController < ApplicationController
             render json: command.todo, serializer: ::TodoSerializer
         else
             render json: { error: {messages: command.errors.full_messages } }, status: bad_request
+        end
+    end
+
+    def destroy
+        todos = ::Todo.find_by!(id: params[:id])
+        todos.destroy
+        head :no_content
+    end
+
+    def all
+        query = ::FetchTodosQuery.call
+        if query.success?
+            render json: query.result, serializer: ::TodoListSerializer
+        else
+            render json: { error: {messages: query.errors.full_messages } }, status: bad_request
         end
     end
 
