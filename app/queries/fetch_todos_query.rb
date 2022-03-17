@@ -1,10 +1,11 @@
 class FetchTodosQuery
+    # Mixin Query
     include Query
 
-    attr_reader :body, :isDone
+    attr_reader :todos
 
-    validates :body, presence: true
-    validates :isDone, presence: true
+    def initialize()
+    end
 
     def call
         todos = fetch_todos
@@ -16,6 +17,6 @@ class FetchTodosQuery
     private
 
         def fetch_todos
-            ::Todo.includes(:body, :isDone).order(updated_at: :desc)
+            ::Todo.order(updated_at: :desc)
         end
 end

@@ -3,7 +3,7 @@ class TodoList
     include ActiveModel::Serialization
     attr_accessor :todos
 
-    def initialize(todos: )
+    def initialize(todos:)
         @todos = todos
     end
 end
