@@ -3,8 +3,7 @@ class FetchTodosQuery
     include Query
 
     attr_reader :todos
-    attr_accessor :body, :isDone
-    # attr_accessor :todos
+    attr_accessor :todos
 
     validates :todos, presence: true
 
