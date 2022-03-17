@@ -1,15 +1,15 @@
 class FetchTodosQuery
-    # Mixin Query module
+    # Mixin Query
     include Query
 
-    # attr_reader :body, :isDone
+    attr_reader :todos
+    attr_accessor :body, :isDone
+    # attr_accessor :todos
 
-    # validates :body, presence: true
-    # validates :isDone, presence: true
+    validates :todos, presence: true
 
-    def initialize(body:, isDone:)
-        @body = body
-        @isDone = isDone
+    def initialize(todos:)
+        @todos = todos
     end
 
     def call
@@ -22,8 +22,6 @@ class FetchTodosQuery
     private
 
         def fetch_todos
-            ::Todo.all
-            # ::Todo.order(updated_at: :desc)
-            # @result.order(updated_at: :desc)
+            ::Todo.order(updated_at: :desc)
         end
 end
