@@ -2,13 +2,7 @@ class FetchTodosQuery
     # Mixin Query
     include Query
 
-    attr_reader :todos
-    attr_accessor :todos
-
-    validates :todos, presence: true
-
-    def initialize(todos:)
-        @todos = todos
+    def initialize()
     end
 
     def call
