@@ -9,5 +9,9 @@ Rails.application.routes.draw do
 
   get "/todos", to: "todos#index"
   get "/todos/:id", to: "todos#show"
-  root "todos#index"
-end
+
+  resources :todos, only: [:index, :show, :update] do
+    get 'all'
+  end
+
+  root "todos#index" end
