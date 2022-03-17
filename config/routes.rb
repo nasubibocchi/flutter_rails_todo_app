@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   # get '/isDone', to: 'todos#isDone'
   # get '/body', to: 'todos#body'
-  resources :todos
-  root to: "todos#index"
+  # resources :todos
+
+  get "/todos", to: "todos#index"
+  get "/todos/:id", to: "todos#show"
+  root "todos#index"
 end
