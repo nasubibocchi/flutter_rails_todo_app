@@ -2,6 +2,8 @@ class FetchTodosQuery
     # Mixin Query
     include Query
 
+    attr_reader :todos
+
     def initialize()
     end
 
