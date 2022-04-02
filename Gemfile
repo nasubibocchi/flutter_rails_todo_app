@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.0"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 gem "sprockets-rails"
+gem 'mysql2'
 
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", "~> 1.4"
@@ -25,8 +26,17 @@ gem 'json', '>= 2.3.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'parallel_tests'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'rspec_junit_formatter'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-rails'
   gem "sqlite3", "1.4.2"
-  gem "byebug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
