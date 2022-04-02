@@ -19,7 +19,7 @@ class TodosController < ApplicationController
     end
 
     def show
-        todos = ::Todo.find_by!(id: params[:id])
+        todos = ::Todo.find_by(id: params[:id])
         render json: todos, serializer: ::TodoSerializer
     end
 
@@ -36,16 +36,16 @@ class TodosController < ApplicationController
 
     def destroy
         todos = ::Todo.find_by!(id: params[:id])
-        todos.destroy
+        todos.destroyh
         head :no_content
     end
 
     def all
-        query = ::FetchTodosQuery.call
+        query = ::FetchTodosQuery.call()
         if query.success?
             render json: query.result, serializer: ::TodoListSerializer
         else
-            render json: { error: {messages: query.errors.full_messages } }, status: bad_request
+            render json: { error: { messages: query.errors.full_messages } }, status: bad_request
         end
     end
 
