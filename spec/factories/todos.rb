@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :todo do
-    sequence(:body) { "BODY#{n}" }
-    sequence(:isDone) { "ISDONE#{n}" }
+    sequence(:body) { |n| "BODY#{n}" }
+    sequence(:isDone) { |n| "ISDONE#{n}" }
   end
 end
