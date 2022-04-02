@@ -16,7 +16,6 @@ class FetchTodosQuery
 
         def fetch_todos
             ::Todo
-            .all
             .order(updated_at: :desc)
         end
 end

@@ -19,8 +19,8 @@ class TodosController < ApplicationController
     end
 
     def show
-        todos = ::Todo.find_by(id: params[:id])
-        render json: todos, serializer: ::TodoSerializer
+        todo = ::Todo.find_by!(id: params[:id])
+        render json: todo, serializer: ::TodoSerializer
     end
 
     def update
