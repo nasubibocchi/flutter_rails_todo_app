@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :todos, only: [:index, :show, :update] do
     collection do
       get :all
+      post :create
     end
   end
 
