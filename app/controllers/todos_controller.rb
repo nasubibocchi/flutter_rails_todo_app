@@ -35,8 +35,8 @@ class TodosController < ApplicationController
     end
 
     def destroy
-        todos = ::Todo.find_by!(id: params[:id])
-        todos.destroyh
+        todo = ::Todo.find_by!(id: params[:id])
+        todo.destroy
         head :no_content
     end
 
