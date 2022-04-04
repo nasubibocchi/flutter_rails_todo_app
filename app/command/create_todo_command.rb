@@ -7,12 +7,12 @@ class CreateTodoCommand
     validates :isDone, presence: true
 
     def initialize(body:, isDone:)
-        @body = before_destroy
+        @body = body
         @isDone = isDone
     end
 
     def run
-        todo = ::Todo.create_todo!( body: body, isDone: isDone )
+        todo = ::Todo.create_todo!(body: body, isDone: isDone)
         self.todo = todo
     end
 end
