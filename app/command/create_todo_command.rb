@@ -1,7 +1,7 @@
 class CreateTodoCommand
     include Command
     attr_reader :body, :isDone
-    attr_accessor :todos
+    attr_accessor :todo
 
     validates :body, presence: true
     validates :isDone, presence: true
@@ -12,10 +12,7 @@ class CreateTodoCommand
     end
 
     def run
-        todo = ::Todo.create_with_detail!(
-            body: body,
-            isDone: isDone,
-        )
-        self.todos = todo;
+        todo = ::Todo.create_todo!(body: body, isDone: isDone)
+        self.todo = todo
     end
 end

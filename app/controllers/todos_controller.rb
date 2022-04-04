@@ -7,9 +7,9 @@ class TodosController < ApplicationController
         )
 
         if command.success?
-            render json: command.todo, selializer: ::TodoSerializer
+            render json: command.todo, serializer: ::TodoSerializer
         else
-            render json: { error: {messages: command.errors.full_messages } }, status: bad_request
+            render json: { error: { messages: command.errors.full_messages } }, status: :bad_request
         end
     end
 
@@ -30,13 +30,13 @@ class TodosController < ApplicationController
         if command.success?
             render json: command.todo, serializer: ::TodoSerializer
         else
-            render json: { error: {messages: command.errors.full_messages } }, status: bad_request
+            render json: { error: { messages: command.errors.full_messages } }, status: :bad_request
         end
     end
 
     def destroy
-        todos = ::Todo.find_by!(id: params[:id])
-        todos.destroyh
+        todo = ::Todo.find_by!(id: params[:id])
+        todo.destroy
         head :no_content
     end
 
@@ -45,7 +45,7 @@ class TodosController < ApplicationController
         if query.success?
             render json: query.result, serializer: ::TodoListSerializer
         else
-            render json: { error: { messages: query.errors.full_messages } }, status: bad_request
+            render json: { error: { messages: query.errors.full_messages } }, status: :bad_request
         end
     end
 
