@@ -7,6 +7,9 @@ class FetchTodosQuery
 
     def call
         todos = fetch_todos
+        if todos.nil?
+            todos = []
+        end
         todo_list = ::TodoList.new(todos: todos)
 
         self.result = todo_list
