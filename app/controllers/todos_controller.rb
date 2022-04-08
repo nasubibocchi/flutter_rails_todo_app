@@ -1,6 +1,4 @@
 class TodosController < ApplicationController
-    after_action :set_csrf_token_header
-
     def create
         command = ::CreateTodoCommand.run(
             body: safe_params[:body],
