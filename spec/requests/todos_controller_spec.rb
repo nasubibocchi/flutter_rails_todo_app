@@ -45,12 +45,13 @@ describe ::TodosController, type: :request do
     let(:params) do
       {
         body: 'body',
-        isDone: 'isDone',
+        is_done: 'is_done',
       }
     end
 
     it 'creates a record' do
       expect { subject }.to change { ::Todo.count }.by(1)
+      # binding.irb
       expect(response.status).to eq 200
     end
   end
