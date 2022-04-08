@@ -4,7 +4,7 @@ class Todo < ApplicationRecord
       ActiveRecord::Base.transaction do
         Todo.create!(
           body: body,
-          isDone: isDone,
+          isDone: false,
         )
       end
     end
