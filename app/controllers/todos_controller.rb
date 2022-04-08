@@ -1,6 +1,5 @@
 class TodosController < ApplicationController
-    # protect_from_forgery with: :null_session
-    skip_before_action :verify_authenticity_token
+    after_action :set_csrf_token_header
 
     def create
         command = ::CreateTodoCommand.run(
