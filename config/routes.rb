@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "/todos", to: "todos#index"
   # get "/todos/:id", to: "todos#show"
 
-  resources :todos, only: [:index, :show, :update] do
+  resources :todos, only: [] do
     collection do
       get :all
       post :create
