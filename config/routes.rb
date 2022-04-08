@@ -17,4 +17,4 @@ Rails.application.routes.draw do
     end
   end
 
-  root "todos#index" end
+  root "todos#all" end
