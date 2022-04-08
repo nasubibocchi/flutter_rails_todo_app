@@ -2,8 +2,8 @@ class TodosController < ApplicationController
 
     def create
         command = ::CreateTodoCommand.run(
-            body: params[:body],
-            isDone: params[:isDone],
+            body: safe_params[:body],
+            isDone: safe_params[:isDone],
         )
 
         if command.success?
