@@ -50,7 +50,6 @@ describe ::TodosController, type: :request do
     end
 
     it 'creates a record' do
-      binding.irb
       expect { subject }.to change { ::Todo.count }.by(1)
       expect(response.status).to eq 200
     end
