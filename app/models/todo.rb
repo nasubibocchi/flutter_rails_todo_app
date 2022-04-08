@@ -1,10 +1,10 @@
 class Todo < ApplicationRecord
   class << self
-    def create_todo!(body:, isDone:)
+    def create_todo!(body:, is_done:)
       ActiveRecord::Base.transaction do
         Todo.create!(
           body: body,
-          isDone: isDone,
+          is_done: is_done,
         )
       end
     end
