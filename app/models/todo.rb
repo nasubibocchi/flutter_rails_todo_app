@@ -1,4 +1,7 @@
 class Todo < ApplicationRecord
+  validates :body, presence: true
+  validates :is_done, presence: true
+
   class << self
     def create_todo!(body:, is_done:)
       ActiveRecord::Base.transaction do
