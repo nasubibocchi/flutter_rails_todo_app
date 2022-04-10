@@ -2,7 +2,7 @@ class TodosController < ApplicationController
     def create
         command = ::CreateTodoCommand.run(
             body: safe_params[:body],
-            is_done: safe_params[:is_done].to_bool,
+            is_done: ActiveRecord::Type::Boolean.new.cast(safe_params[:is_done]),
         )
 
         if command.success?
