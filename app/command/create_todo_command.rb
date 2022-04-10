@@ -1,7 +1,11 @@
 class CreateTodoCommand
     include Command
+
     attr_reader :body, :is_done
     attr_accessor :todo
+
+    validates :body, presence: true
+    validates :is_done, inclusion: { in: [true, false] }
 
     def initialize(body:, is_done:)
         @body = body
