@@ -55,4 +55,38 @@ describe ::TodosController, type: :request do
       expect(response.status).to eq 200
     end
   end
+
+  describe '#PATCH todos/:id' do
+    let(:url) { "/todos/#{todo.id}" }
+    let(:headers) do
+      {
+        'Content-Type': 'application/json',
+      }
+    end
+    let(:todo) { create(:todo) }
+
+    subject { patch url, params: params.to_json, headers: headers }
+
+    context 'with valid params' do
+      let(:params) do
+        {
+          id: todo.id,
+          body: 'modified body',
+          is_done: true,
+        }
+      end
+
+      it 'returns correct state' do
+        subject
+        expect(response.status).to eq 200
+      end
+
+      it 'returns correct is_done' do
+        subject
+        res = JSON.parse(response.body)
+        binding.irb
+        expect(res['is_done']).to eq true
+      end
+    end
+  end
 end
