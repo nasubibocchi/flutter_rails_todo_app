@@ -1,24 +1,5 @@
-# README
+[Flutter application](https://github.com/nasubibocchi/flutter_rails_todo_app_app)と通信するAPI。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- frame work: Ruby on Rails
+- test: RSpec
+- data base engine: sqlite3
