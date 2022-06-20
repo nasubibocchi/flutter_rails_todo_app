@@ -24,7 +24,9 @@ class TodosController < ApplicationController
 
     def update
         command = ::UpdateTodoCommand.run(
-            is_done: !(params[:is_done]&.presence),
+            id: params[:id],
+            body: params[:body],
+            is_done: params[:is_done],
         )
         if command.success?
             render json: command.todo, serializer: ::TodoSerializer
@@ -51,6 +53,6 @@ class TodosController < ApplicationController
     private
 
         def safe_params
-            params.permit(:body, :is_done)
+            params.permit(:id, :body, :is_done)
         end
 end
