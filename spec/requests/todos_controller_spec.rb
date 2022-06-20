@@ -84,8 +84,43 @@ describe ::TodosController, type: :request do
       it 'returns correct is_done' do
         subject
         res = JSON.parse(response.body)
-        binding.irb
+        # binding.irb
         expect(res['is_done']).to eq true
+      end
+    end
+  end
+
+  describe '#DELETE todo/:id' do
+    let(:url) { "/todos/#{todo_id}" }
+    let(:headers) do
+      {
+        'Content-Type': 'application/json',
+      }
+    end
+
+    subject { delete url, params: params.to_json, headers: headers }
+
+    context 'Delete a todo' do
+      before do
+        todos_arr = []
+        5.times do
+          todo = build(:todo)
+          todos_arr << todo
+        end
+        ::Todo.import!(todos_arr)
+      end
+
+      let(:todo_id) { ::Todo.all.first.id }
+      let(:params) do
+        {
+          id: todo_id,
+        }
+      end
+
+      it 'return correct todo size' do
+        subject
+        # binding.irb
+        expect(::Todo.all.count).to eq 4
       end
     end
   end
