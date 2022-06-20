@@ -24,9 +24,9 @@ class TodosController < ApplicationController
 
     def update
         command = ::UpdateTodoCommand.run(
-            id: params[:id],
-            body: params[:body],
-            is_done: params[:is_done],
+            id: params[:id].presence,
+            body: params[:body].presence,
+            is_done: params[:is_done].presence,
         )
         if command.success?
             render json: command.todo, serializer: ::TodoSerializer
