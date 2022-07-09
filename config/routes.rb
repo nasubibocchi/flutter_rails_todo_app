@@ -7,4 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:create, :update, :destroy] do
+  end
+
   root "todos#all" end
